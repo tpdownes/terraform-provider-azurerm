@@ -31,7 +31,7 @@ func TestAccWindowsVirtualMachineScaleSet_imagesAutomaticUpdate(t *testing.T) {
 		},
 		data.ImportStep(
 			"admin_password",
-			"enable_automatic_updates",
+			"automatic_updates_enabled",
 		),
 		{
 			Config: r.imagesAutomaticUpdate(data, "2019-Datacenter"),
@@ -41,7 +41,7 @@ func TestAccWindowsVirtualMachineScaleSet_imagesAutomaticUpdate(t *testing.T) {
 		},
 		data.ImportStep(
 			"admin_password",
-			"enable_automatic_updates",
+			"automatic_updates_enabled",
 		),
 	})
 }
@@ -59,7 +59,7 @@ func TestAccWindowsVirtualMachineScaleSet_imagesDisableAutomaticUpdate(t *testin
 		},
 		data.ImportStep(
 			"admin_password",
-			"enable_automatic_updates",
+			"automatic_updates_enabled",
 		),
 		{
 			Config: r.imagesDisableAutomaticUpdate(data, "2019-Datacenter"),
@@ -69,7 +69,7 @@ func TestAccWindowsVirtualMachineScaleSet_imagesDisableAutomaticUpdate(t *testin
 		},
 		data.ImportStep(
 			"admin_password",
-			"enable_automatic_updates",
+			"automatic_updates_enabled",
 		),
 	})
 }
@@ -299,8 +299,8 @@ resource "azurerm_windows_virtual_machine_scale_set" "test" {
   }
 
   automatic_os_upgrade_policy {
-    disable_automatic_rollback  = true
-    enable_automatic_os_upgrade = true
+    automatic_rollback_disabled  = true
+    automatic_os_upgrade_enabled = true
   }
 
   rolling_upgrade_policy {
@@ -352,8 +352,8 @@ resource "azurerm_windows_virtual_machine_scale_set" "test" {
   }
 
   automatic_os_upgrade_policy {
-    disable_automatic_rollback  = false
-    enable_automatic_os_upgrade = false
+    automatic_rollback_disabled  = false
+    automatic_os_upgrade_enabled = false
   }
 
   rolling_upgrade_policy {
